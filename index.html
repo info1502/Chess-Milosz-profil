@@ -3,29 +3,39 @@
 <head>
 <meta charset="UTF-8">
 <title>Profil Szachowy</title>
-<style>/* Resetujemy absolutnie wszystko */    * { margin: 0; padding: 0; }          body, html {       height: 100%;       width: 100%;       overflow: hidden; /* Blokuje przewijanie strony GitHuba */background-color: transparent;     }          #profilIframe {       position: absolute;       top: 0;       left: 0;       width: 100%;       height: 100%;       border: none;     }   </style>
+<style>
+    body, html { margin: 0; padding: 0; height: 100%; width: 100%; overflow: hidden; }
+    #profilIframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+</style>
 </head>
 <body>
 
  
 
-  <iframe id="profilIframe" src="https://script.google.com/macros/s/AKfycbxJBb8fpqxVNnobe_EoTYy5O5fUI8R41Lbo-nkSLHAF2dFd7TJDEHE8lQ0yyX_i8EFD4Q/exec" width="100%" height="100%" frameborder="0"></iframe>
+  <iframe id="profilIframe" frameborder="0" allow="fullscreen"></iframe>
 
  
 
   <script>
-    // 1. Pobieramy dopisek (np. ?user=ChessDragon_07) z paska przeglądarki na GitHubie
+    // Twój link do aplikacji (pełny, aż do /exec)
+    var baseLink = "https://script.google.com/macros/s/AKfycbxJBb8fpqxVNnobe_EoTYy5O5fUI8R41Lbo-nkSLHAF2dFd7TJDEHE8lQ0yyX_i8EFD4Q/exec"
+
+ 
+
     var urlParams = new URLSearchParams(window.location.search);
     var user = urlParams.get('user');
-
- 
-
-    // 2. Znajdujemy ramkę i przekazujemy jej ten nick
     var iframe = document.getElementById("profilIframe");
-    var baseLink = "https://script.google.com/macros/s/AKfycbxJBb8fpqxVNnobe_EoTYy5O5fUI8R41Lbo-nkSLHAF2dFd7TJDEHE8lQ0yyX_i8EFD4Q/exec"; // Pamiętaj, aby podmienić ten link na swój link Google Apps Script zakończony na /exec
 
  
 
+    // Jeśli jest użytkownik w linku, dodajemy go, jeśli nie – ładujemy stronę główną
     if (user) {
       iframe.src = baseLink + "?user=" + encodeURIComponent(user);
     } else {
@@ -37,4 +47,3 @@
 
 </body>
 </html>
-  
